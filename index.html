@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AngularJs Json</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="controller.js"></script>
+    <link rel="stylesheet" href="style.css">
+     <script src="dirPagination.js"></script>
+  </head>
+
+  <body ng-app="myApp">
+  <br><br><br>
+  <div class="container-fluid" ng-controller="EmpCtrl">
+  <div class="row">
+              <div class="col-md-2">
+              </div>
+              <div class="col-md-8">
+                    <form class="form-inline">
+                       <div class="form-group">
+                       <label >Search</label>
+                       <input type="text" ng-model="search" class="form-control" placeholder="Search">
+                       <i class="fa fa-search" id="icon"></i>
+                       </div>
+                    </form>
+                    <br><br>
+                <table class="table table-hover">
+                    <tr id='col'>
+                    <th>NAME</th>
+                    <th>JOB</th>
+                    <th>SALARY</th>
+                    <th colspan="2"></th>
+                    </tr>
+                    <tr dir-paginate="x in emp|filter:search|itemsPerPage:8" id="page">
+                        <td>
+                          <span ng-hide="editMode">{{x.name}}</span>
+                          <input type="text" ng-show="editMode" ng-model="x.name" />
+                        </td>
+                        <td>
+                           <span ng-hide="editMode">{{x.job}}</span>
+                           <input type="text" ng-show="editMode" ng-model="x.job"  />
+                        </td>
+                        <td>
+                           <span ng-hide="editMode">{{x.sal|currency:"&#8377;"}}</span>
+                           <input type="text" ng-show="editMode" ng-model="x.sal"  /></td>
+                        <td>
+                           <span><i class="fa fa-pencil-square-o" ng-hide="editMode" ng-click="editMode = true; editItem(x)" id="icon1"></i></span>
+                            <span><i class="fa fa-floppy-o" ng-show="editMode" ng-click="editMode = false" id="icon2"></i></span>
+                        </td>
+                    <div ng-show="(emp | filter:search).length==0" id="len">No DataFound</div>
+                    <td><i class="fa fa-trash-o" ng-click="removeRow(x.name)" id="del"></i></td>
+                    </tr>
+                </table>
+              </div>
+            </div>
+    <div class="row">
+                   <div class='col-md-2'></div>
+               <div class='col-md-8'>
+                    <form class="form-horizontal" role="form" ng-submit="addRow()" name="my">
+                       <div class="col-md-3">
+                       <input type="text" class="form-control" name="name" ng-model="name" id="box1" required /><br><br>
+                       <span style="color:red" >
+                       <span ng-show="my.name.$error.required">Name is required.</span>
+                       </span>
+                       </div>
+                       <div class="col-md-4">
+                       <input type="text" class="form-control" name="job" ng-model="job" id="box2" required /><br><br>
+                        <span style="color:red">
+                       <span ng-show="my.job.$error.required">Job is required.</span>
+                       </span>
+                       </div>
+                       <div class="col-md-4">
+                       <input type="number" class="form-control" name="sal" ng-model="sal" id="box3" required/><br><br>
+                        <span style="color:red">
+                       <span ng-show="my.sal.$error.required">Salary is required.</span>
+                       </span>
+                       </div>
+                       <div class="col-md-1">
+                       <button type="button" class="fa fa-plus" ng-click="addRow(x.name)" style="position:absolute;right:18px;color:#1B926C;top:-2px;font-size:29px;cursor:pointer" ng-disabled="my.name.$error.required ||my.job.$error.required || my.sal.$error.required"></button>
+                       </div>
+                    </form>
+                </div>
+    </div><br>
+        <div class='row'>
+        <div class='col-md-2'></div>
+        <div class='col-md-8'>
+        <dir-pagination-controls
+        max-size="10"
+        direction-links="true"
+        boundary-links="true" style="position:absolute;left:15px" >
+       </div></div>
+      <div class="col-md-2">
+      </div>
+  
+</div>
+</body>
+</html>
+
+

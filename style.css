@@ -1,0 +1,63 @@
+.form-group
+{
+position: absolute;
+right: 15px;
+top: -30px;
+color: #1B926C;
+}
+.form-control
+{
+  border-color: rgb(22, 173, 157);
+}
+h4
+{
+  color: #B627BF
+}
+#col
+{
+  color:rgba(227, 227, 236, 0.91);
+  background-color: #1B926C;
+}
+#len
+{    
+  position: absolute;
+  top: 207px;
+  font-size: 24px;
+  color: red;
+}
+
+#icon
+{
+ position: absolute;
+ right: 5px;
+ top: 7px;
+ font-size: 17px;
+ color: #1B926C;
+}
+#page
+{
+  background-color: rgba(134, 124, 124, 0.13);
+}
+#del
+{
+  cursor: pointer;
+  color: red
+}
+#box1{
+
+position: absolute;
+left: 0px;}
+#box2{
+
+position: absolute;
+left: 7px;}
+#box3{
+
+position: absolute;
+left: 19px;}
+#btn{position: absolute;
+left: 0px;
+}
+#plus{position: absolute;}
+#icon1{color:rgba(170, 22, 157, 0.91);cursor: pointer;}
+#icon2{color:red;cursor: pointer;}

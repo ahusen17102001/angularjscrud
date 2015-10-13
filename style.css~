@@ -1,0 +1,13 @@
+
+.container
+{
+position: absolute;
+top: 69px;
+left: 245px;
+}
+.form-group
+{
+position: absolute;
+right: 30px;
+top: 23px;
+}
